@@ -3,17 +3,17 @@ requires=["flit_core >=3.12,<4"]
 build-backend="flit_core.buildapi"
 
 [project]
-name="torch-geometric"
-version="2.7.0"
+name="paddle-geometric"
+version="0.0.1"
 authors=[
     {name="Matthias Fey", email="matthias@pyg.org"},
 ]
-description="Graph Neural Network Library for PyTorch"
+description="Graph Neural Network Library for Paddle"
 readme="README.md"
 requires-python=">=3.9"
 keywords=[
     "deep-learning",
-    "pytorch",
+    "paddle",
     "geometric-deep-learning",
     "graph-neural-networks",
     "graph-convolutional-networks",
@@ -45,11 +45,7 @@ dependencies=[
 [project.optional-dependencies]
 graphgym=[
     "protobuf<4.21",
-    "pytorch-lightning<2.3.0",
     "yacs",
-]
-modelhub=[
-    "huggingface_hub"
 ]
 benchmark=[
     "matplotlib",
@@ -99,8 +95,6 @@ full = [
     "statsmodels",
     "sympy",
     "tabulate",
-    "torch_geometric[graphgym, modelhub]",
-    "torchmetrics",
     "trimesh",
 ]
 
@@ -111,7 +105,7 @@ repository="https://github.com/pyg-team/pytorch_geometric.git"
 changelog="https://github.com/pyg-team/pytorch_geometric/blob/master/CHANGELOG.md"
 
 [tool.flit.module]
-name="torch_geometric"
+name="paddle_geometric"
 
 [tool.yapf]
 based_on_style = "pep8"
@@ -119,7 +113,7 @@ split_before_named_assigns = false
 blank_line_before_nested_class_or_def = false
 
 [tool.mypy]
-files = ["torch_geometric"]
+files = ["paddle_geometric"]
 install_types = true
 non_interactive = true
 ignore_missing_imports = true
@@ -133,15 +127,15 @@ disallow_incomplete_defs = true
 [[tool.mypy.overrides]]
 ignore_errors = true
 module = [
-    "torch_geometric.data.*",
-    "torch_geometric.sampler.*",
-    "torch_geometric.loader.*",
-    "torch_geometric.nn.*",
-    "torch_geometric.explain.*",
-    "torch_geometric.profile.*",
-    "torch_geometric.contrib.*",
-    "torch_geometric.graphgym.*",
-    "torch_geometric.distributed.*",
+    "paddle_geometric.data.*",
+    "paddle_geometric.sampler.*",
+    "paddle_geometric.loader.*",
+    "paddle_geometric.nn.*",
+    "paddle_geometric.explain.*",
+    "paddle_geometric.profile.*",
+    "paddle_geometric.contrib.*",
+    "paddle_geometric.graphgym.*",
+    "paddle_geometric.distributed.*",
 ]
 
 [tool.isort]
@@ -211,24 +205,6 @@ filterwarnings = [
 ]
 markers = [
     "rag: mark test as RAG test",
-]
-
-[tool.coverage.run]
-source = ["torch_geometric"]
-omit = [
-    "torch_geometric/distributed/*",
-    "torch_geometric/datasets/*",
-    "torch_geometric/data/extract.py",
-    "torch_geometric/nn/data_parallel.py",
-]
-
-[tool.coverage.report]
-exclude_lines = [
-    "pragma: no cover",
-    "pass",
-    "raise NotImplementedError",
-    "register_parameter",
-    "torch.cuda.is_available",
 ]
 
 [tool.setuptools]
